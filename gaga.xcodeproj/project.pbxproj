@@ -3,27 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E52477955A00E19AC6 /* AppDelegate.swift */; };
 		478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E72477955A00E19AC6 /* SceneDelegate.swift */; };
-		478DF2EA2477955A00E19AC6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E92477955A00E19AC6 /* ContentView.swift */; };
 		478DF2EC2477955C00E19AC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478DF2EB2477955C00E19AC6 /* Assets.xcassets */; };
 		478DF2EF2477955C00E19AC6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478DF2EE2477955C00E19AC6 /* Preview Assets.xcassets */; };
 		478DF2F22477955C00E19AC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478DF2F02477955C00E19AC6 /* LaunchScreen.storyboard */; };
+		478DF2FA247796F200E19AC6 /* redditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2F9247796F200E19AC6 /* redditData.swift */; };
+		478DF2FC247797D500E19AC6 /* redditUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2FB247797D500E19AC6 /* redditUIView.swift */; };
+		773636197AAED9C0E1706D22 /* Pods_gaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB30E3B9CA9725C036DAC95D /* Pods_gaga.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B040530F0225E7636A26353 /* Pods-gaga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gaga.release.xcconfig"; path = "Target Support Files/Pods-gaga/Pods-gaga.release.xcconfig"; sourceTree = "<group>"; };
 		478DF2E22477955A00E19AC6 /* gaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		478DF2E52477955A00E19AC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		478DF2E72477955A00E19AC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		478DF2E92477955A00E19AC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		478DF2EB2477955C00E19AC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		478DF2EE2477955C00E19AC6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		478DF2F12477955C00E19AC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		478DF2F32477955C00E19AC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		478DF2F9247796F200E19AC6 /* redditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = redditData.swift; path = /Users/user17/Desktop/gaga/gaga/redditData.swift; sourceTree = "<absolute>"; };
+		478DF2FB247797D500E19AC6 /* redditUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redditUIView.swift; sourceTree = "<group>"; };
+		873B79F0F8EEA68E3DAB467C /* Pods-gaga.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gaga.debug.xcconfig"; path = "Target Support Files/Pods-gaga/Pods-gaga.debug.xcconfig"; sourceTree = "<group>"; };
+		EB30E3B9CA9725C036DAC95D /* Pods_gaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773636197AAED9C0E1706D22 /* Pods_gaga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3081D77ABF15E2B409DB379F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				873B79F0F8EEA68E3DAB467C /* Pods-gaga.debug.xcconfig */,
+				0B040530F0225E7636A26353 /* Pods-gaga.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		478DF2D92477955A00E19AC6 = {
 			isa = PBXGroup;
 			children = (
 				478DF2E42477955A00E19AC6 /* gaga */,
 				478DF2E32477955A00E19AC6 /* Products */,
+				3081D77ABF15E2B409DB379F /* Pods */,
+				FA122EB7E51CCBAC2465F3E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +74,10 @@
 		478DF2E42477955A00E19AC6 /* gaga */ = {
 			isa = PBXGroup;
 			children = (
+				478DF2F9247796F200E19AC6 /* redditData.swift */,
+				478DF2FB247797D500E19AC6 /* redditUIView.swift */,
 				478DF2E52477955A00E19AC6 /* AppDelegate.swift */,
 				478DF2E72477955A00E19AC6 /* SceneDelegate.swift */,
-				478DF2E92477955A00E19AC6 /* ContentView.swift */,
 				478DF2EB2477955C00E19AC6 /* Assets.xcassets */,
 				478DF2F02477955C00E19AC6 /* LaunchScreen.storyboard */,
 				478DF2F32477955C00E19AC6 /* Info.plist */,
@@ -75,6 +94,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		FA122EB7E51CCBAC2465F3E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB30E3B9CA9725C036DAC95D /* Pods_gaga.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 478DF2F62477955C00E19AC6 /* Build configuration list for PBXNativeTarget "gaga" */;
 			buildPhases = (
+				16C9716DBDC4FECA3BF266F3 /* [CP] Check Pods Manifest.lock */,
 				478DF2DE2477955A00E19AC6 /* Sources */,
 				478DF2DF2477955A00E19AC6 /* Frameworks */,
 				478DF2E02477955A00E19AC6 /* Resources */,
+				EB2214AC7914C9041BAA1DA3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +170,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16C9716DBDC4FECA3BF266F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gaga-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2214AC7914C9041BAA1DA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gaga/Pods-gaga-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gaga/Pods-gaga-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gaga/Pods-gaga-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		478DF2DE2477955A00E19AC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -148,7 +219,8 @@
 			files = (
 				478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */,
 				478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */,
-				478DF2EA2477955A00E19AC6 /* ContentView.swift in Sources */,
+				478DF2FC247797D500E19AC6 /* redditUIView.swift in Sources */,
+				478DF2FA247796F200E19AC6 /* redditData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +354,7 @@
 		};
 		478DF2F72477955C00E19AC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 873B79F0F8EEA68E3DAB467C /* Pods-gaga.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +374,7 @@
 		};
 		478DF2F82477955C00E19AC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B040530F0225E7636A26353 /* Pods-gaga.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
