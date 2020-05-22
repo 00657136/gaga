@@ -25,7 +25,7 @@ struct redditUIView: View {
                 if result.imurl != "self"{
                     WebImage(url: URL(string: result.imurl)!).resizable().scaledToFit().frame(width:UIScreen.main.bounds.width*11/12).cornerRadius(10)
                 }
-                Text("score: "+result.score).font(.system(size: 15))
+                Text("score: "+result.score).font(.system(size: 15)).padding()
                 
                 
             }.onTapGesture {
