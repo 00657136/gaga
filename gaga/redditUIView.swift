@@ -87,3 +87,6 @@ class getRedditData: ObservableObject {
         
     }
 }
+
+// twitter token 2865074976-05JgfUl55964SRvk61cyLqxoOFpfIBUe0igrMDk
+//twitter secret token LBJlT4xlsIEmd25RLJuxFRfb7rB4hTZZ2pikn6UrfPzaA
