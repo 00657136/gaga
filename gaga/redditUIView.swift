@@ -15,12 +15,12 @@ struct redditUIView: View {
     @State var show = false
     @State var url = ""
     var body: some View {
-                List(results.data){result in
+        List(results.data){result in
             VStack(alignment: .leading, spacing: 10){
                 
                 Text("Posted by u/"+result.author).font(.system(size: 12)).foregroundColor(Color.gray)
                 Text(result.title).fontWeight(.black)
-                //Text(result.imurl).fontWeight(.black)
+                
                 
                 if result.imurl != "self"{
                     WebImage(url: URL(string: result.url)!).resizable().scaledToFit().frame(width:UIScreen.main.bounds.width*11/12).cornerRadius(10)
@@ -88,5 +88,3 @@ class getRedditData: ObservableObject {
     }
 }
 
-// twitter token 2865074976-05JgfUl55964SRvk61cyLqxoOFpfIBUe0igrMDk
-//twitter secret token LBJlT4xlsIEmd25RLJuxFRfb7rB4hTZZ2pikn6UrfPzaA

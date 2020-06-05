@@ -16,4 +16,16 @@ struct twitterProfileData: Identifiable {
     var followers_count: String
     var profile_image_url_https: String
     var profile_banner_url: String
+    var display_url:String
+}
+
+struct tweetData: Identifiable {
+    var id: String
+    var name: String
+    var url: String
+    var screen_name: String
+    var text: String
+    var retweet_count: String
+    var favorite_count: String
+    var profile_image_url_https: String
 }
