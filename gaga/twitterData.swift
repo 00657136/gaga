@@ -17,6 +17,7 @@ struct twitterProfileData: Identifiable {
     var profile_image_url_https: String
     var profile_banner_url: String
     var display_url:String
+    var created_at:String
 }
 
 struct tweetData: Identifiable {
@@ -28,4 +29,5 @@ struct tweetData: Identifiable {
     var retweet_count: String
     var favorite_count: String
     var profile_image_url_https: String
+    var created_at:String
 }
