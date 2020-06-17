@@ -34,8 +34,9 @@ struct spotifyProfileData: Identifiable {
  
  {"access_token":"BQBmmszQsYIo2B_BvobbgNnwr1t1ghq3Esxa22-OvyAkadrSQQk2d8FjYW6rWFupoGubu6whQpWmbN0EGu0zo3oSPd7jvqRFoW3kTQlKuWlFTF0ykRBvzs_beuirkkd6oMbLrJX2rGJZwchTsk12rRGByQfy","token_type":"Bearer","expires_in":3600,"refresh_token":"AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc","scope":"playlist-read-private"}%
  
- curl -H "Authorization: Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=" -d grant_type=refresh_token -d refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc https://accounts.spotify.com/api/token
  
+ curl -H "Authorization: Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=" -d grant_type=refresh_token -d refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc https://accounts.spotify.com/api/token
+
 {"access_token":"BQAkaNSjTEjLUFPPUxFKFsUymDEnltyTPZOOgJ7FJwWqMsK76rRXFzHETFQoji8Jy71DNqSDqS4voBazFbkmN-uEho6XFsOYp7ZMAQ2lCOAFP7-YiT6InlW9a3KQC5vicBM1N7cY-DkYaLTNG3RDooNQTL3y","token_type":"Bearer","expires_in":3600,"scope":"playlist-read-private"}
  
  */

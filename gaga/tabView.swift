@@ -11,6 +11,10 @@ import SwiftUI
 struct tabView: View {
     var body: some View {
         TabView{
+            spotifyUIView().tabItem{
+                Image("spotify")
+                Text("Spotify")
+            }
             twitterUIView().tabItem{
                 Image("twitter")
                 Text("Twitter")
@@ -19,6 +23,7 @@ struct tabView: View {
                 Image("reddit")
                 Text("Reddit")
             }
+            
         }
     }
 }
