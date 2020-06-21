@@ -24,7 +24,7 @@ struct tabView: View {
                 Text("Reddit")
             }
             
-        }
+        }.accentColor(.black)
     }
 }
 
