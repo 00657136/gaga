@@ -11,9 +11,13 @@ import SwiftyJSON
 import SDWebImageSwiftUI
 
 struct spotifyUIView: View {
+    
     @ObservedObject var results = getspotifyProfileData()
     @ObservedObject var Albums = getspotifyAlbumData()
     @ObservedObject var relatedArtists = getspotifyRelatedArtistsProfileData()
+    @ObservedObject var TopTracks = getspotifyTrackData()
+    @State private var show = false
+    @State var url = ""
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
         
@@ -62,6 +66,42 @@ struct spotifyUIView: View {
                 }
                 //profile******************************
                 
+                //TopTracks****************************
+            Text("熱門歌曲")
+            .frame(minWidth: 0, maxWidth: .infinity)
+                .background(Color.init(red: 187, green: 185, blue: 172))
+            VStack(alignment: .leading, spacing: 10){
+                ForEach(TopTracks.data){track in
+                    HStack(alignment: .center, spacing: 20){
+                        WebImage(url: URL(string: track.imgurl )!)
+                        .resizable()
+                            .scaledToFit()
+                            .frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6)
+                        VStack(alignment: .leading, spacing: 5){
+                            Text(track.name)
+                                .fontWeight(.bold)
+                                .font(.system(size: 20))
+                            Text(track.artists)
+                                .font(.system(size: 15))
+                        }
+                        Spacer()
+                        Button(action: {
+                            self.url = track.external_urls
+                            self.show.toggle()
+                        }){
+                            Image("play-button")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:UIScreen.main.bounds.width/10,height: UIScreen.main.bounds.width/10)
+                        }
+                    }
+                }.sheet(isPresented: self.$show){
+                    SafariView(url: URL(string: self.url)!)
+                }
+            }.padding(.horizontal)
+            
+                //TopTracks****************************
+            
                 //album******************************
             Text("歷年專輯")
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -129,12 +169,13 @@ struct spotifyUIView: View {
             Text("相關歌手")
             .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color.init(red: 187, green: 185, blue: 172))
-            VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
             ForEach(relatedArtists.data){relatedArtist in
                 HStack(alignment: .top,spacing: 20){
                      WebImage(url: URL(string: relatedArtist.imgurl )!)
-                    .resizable().scaledToFit().frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6).cornerRadius(UIScreen.main.bounds.width/6)
-                       // .padding(30)
+                    .resizable().scaledToFit().frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6)
+                        .cornerRadius(UIScreen.main.bounds.width/6)
+                       
                     
                     VStack(alignment: .leading, spacing: 5){
                         Text(relatedArtist.name)
@@ -142,31 +183,32 @@ struct spotifyUIView: View {
                             .font(.system(size: 20))
                             .foregroundColor(Color(.black))
                         HStack(alignment: .center){
-                            Image("genres")
+                            Image("genresB")
                             .resizable()
                             .scaledToFit()
                             .frame(width:UIScreen.main.bounds.width/25)
                             Text("類型:" + relatedArtist.genres).fontWeight(.medium).font(.system(size: 15)).foregroundColor(Color(.black)).fixedSize()
                         }
                         HStack(alignment: .center){
-                            Image("popularity")
+                            Image("popularityB")
                             .resizable()
                             .scaledToFit()
                             .frame(width:UIScreen.main.bounds.width/25)
                             Text("人氣: \(relatedArtist.popularity)/100").fontWeight(.medium).font(.system(size: 15)).foregroundColor(Color(.black)).fixedSize()
                         }
                         HStack(alignment: .center){
-                            Image("follower")
+                            Image("followerB")
                             .resizable()
                             .scaledToFit()
                             .frame(width:UIScreen.main.bounds.width/25)
                             Text("關注者: \(relatedArtist.followers)").fontWeight(.medium).font(.system(size: 15)).foregroundColor(Color(.black)).fixedSize()
                         }
                     }
+                    Spacer()
                 }
                 
             }
-        }
+            }.padding(.horizontal)
                 //relatedArtists*********************
         
         
@@ -187,33 +229,46 @@ class getspotifyProfileData: ObservableObject {
     
     @Published var data = [spotifyProfileData]()
     init(){
-        
-        
-        var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms")!,timeoutInterval: Double.infinity)
-        request.addValue("Bearer BQDfubLZ565XSVAEqiSbXuBhWBBlavkw69TMor6yS4lR3lPyzEirKzoh8RH_RwLkrQNX8oZ1THCABnAs1t_EFbh1zzRj7-rTaz4S6R6VW1m4LtRyvtiPKL2FHIPumGBkcrTGU3Ul1K4oKmqRN-HmrmkoulUW", forHTTPHeaderField: "Authorization")
-        
-        request.httpMethod = "GET"
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: request){(data, _, err) in
-            if err != nil{
-                
-                print((err?.localizedDescription)!)
-                return
-            }
-            
-            let json = try! JSON(data: data!)
-            let id = json["id"].stringValue
-            let name = json["name"].stringValue
-            let imgurl = json["images"][0]["url"].stringValue
-            let popularity = json["popularity"].intValue
-            let followers = json["followers"]["total"].intValue
-            let genres0 = json["genres"][0].stringValue
-            let genres1 = json["genres"][1].stringValue
-            let genres = genres0+","+genres1
-            DispatchQueue.main.async {
-                self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
-            }
-        }.resume()
+         let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let postData =  parameters.data(using: .utf8)
+        if let url = URL(string: "https://accounts.spotify.com/api/token"){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+             request.addValue("Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=", forHTTPHeaderField: "Authorization")
+               request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+               request.addValue("__Host-device_id=AQBPwRuubEaHLe3qzncUC_qxhNi3w6W_sXdPNQenUVz1lXG86eZs3u2hW3kbO2RZEz7-XaJA9gE6J-ZHFpnGNlfS-n3BCM6aYe4; __Secure-TPASESSION=AQCz/AtmF0i7zemzOI63JpokY8izsrk2ImSVSTMRoV9wFeKzaJ3fo6PpoDMKHrlkARSTo8l56+mTXLbOHybt/hF9KwIxAZ4C11Q=; csrf_token=AQDysFWy0rN9M1GtLlb6eRbkaTuqNeRmyQmw5VIxjzUTAVHxYgmK41DZhtFdkivrgIZcEgbMBqQFFmDlGQ", forHTTPHeaderField: "Cookie")
+            request.httpBody = postData
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                let json = try! JSON(data: data!)
+                let token = json["access_token"].stringValue
+               var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms")!,timeoutInterval: Double.infinity)
+               request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+               
+               request.httpMethod = "GET"
+               let session = URLSession(configuration: .default)
+               session.dataTask(with: request){(data, _, err) in
+                   if err != nil{
+                       
+                       print((err?.localizedDescription)!)
+                       return
+                   }
+                   
+                   let json = try! JSON(data: data!)
+                   let id = json["id"].stringValue
+                   let name = json["name"].stringValue
+                   let imgurl = json["images"][0]["url"].stringValue
+                   let popularity = json["popularity"].intValue
+                   let followers = json["followers"]["total"].intValue
+                   let genres0 = json["genres"][0].stringValue
+                   let genres1 = json["genres"][1].stringValue
+                   let genres = genres0+","+genres1
+                   DispatchQueue.main.async {
+                       self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
+                   }
+               }.resume()
+            }.resume()
+        }
         
         
     }
@@ -224,38 +279,52 @@ class getspotifyAlbumData: ObservableObject {
     @Published var data = [spotifyAlbumData]()
     init(){
         
-        
-        var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/albums")!,timeoutInterval: Double.infinity)
-        request.addValue("Bearer BQDfubLZ565XSVAEqiSbXuBhWBBlavkw69TMor6yS4lR3lPyzEirKzoh8RH_RwLkrQNX8oZ1THCABnAs1t_EFbh1zzRj7-rTaz4S6R6VW1m4LtRyvtiPKL2FHIPumGBkcrTGU3Ul1K4oKmqRN-HmrmkoulUW", forHTTPHeaderField: "Authorization")
+        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let postData =  parameters.data(using: .utf8)
+        if let url = URL(string: "https://accounts.spotify.com/api/token"){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+             request.addValue("Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=", forHTTPHeaderField: "Authorization")
+               request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+               request.addValue("__Host-device_id=AQBPwRuubEaHLe3qzncUC_qxhNi3w6W_sXdPNQenUVz1lXG86eZs3u2hW3kbO2RZEz7-XaJA9gE6J-ZHFpnGNlfS-n3BCM6aYe4; __Secure-TPASESSION=AQCz/AtmF0i7zemzOI63JpokY8izsrk2ImSVSTMRoV9wFeKzaJ3fo6PpoDMKHrlkARSTo8l56+mTXLbOHybt/hF9KwIxAZ4C11Q=; csrf_token=AQDysFWy0rN9M1GtLlb6eRbkaTuqNeRmyQmw5VIxjzUTAVHxYgmK41DZhtFdkivrgIZcEgbMBqQFFmDlGQ", forHTTPHeaderField: "Cookie")
+            request.httpBody = postData
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                let json = try! JSON(data: data!)
+                let token = json["access_token"].stringValue
+               var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/albums")!,timeoutInterval: Double.infinity)
+               request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
 
-        request.httpMethod = "GET"
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: request){(data, _, err) in
-            if err != nil{
-                
-                print((err?.localizedDescription)!)
-                return
-            }
-            
-            let json = try! JSON(data: data!)
-            let item = json["items"].array!
-            for i in item{
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let dateFormat = DateFormatter()
-                dateFormat.dateFormat = "yyyy/MM/dd"
-                let id = i["id"].stringValue
-                let name = i["name"].stringValue
-                let imgurl  = i["images"][0]["url"].stringValue
-                let release_date0 = i["release_date"].stringValue
-                let release_Date = dateFormatter.date(from: release_date0)
-                let release_date = dateFormat.string(from: release_Date!)
-                let total_track = i["total_tracks"].intValue
-            DispatchQueue.main.async {
-                self.data.append(spotifyAlbumData(id: id, name: name, imgurl: imgurl, release_date: release_date, total_track: total_track))
-            }
+               request.httpMethod = "GET"
+               let session = URLSession(configuration: .default)
+               session.dataTask(with: request){(data, _, err) in
+                   if err != nil{
+                       
+                       print((err?.localizedDescription)!)
+                       return
+                   }
+                   
+                   let json = try! JSON(data: data!)
+                   let item = json["items"].array!
+                   for i in item{
+                       let dateFormatter = DateFormatter()
+                       dateFormatter.dateFormat = "yyyy-MM-dd"
+                       let dateFormat = DateFormatter()
+                       dateFormat.dateFormat = "yyyy/MM/dd"
+                       let id = i["id"].stringValue
+                       let name = i["name"].stringValue
+                       let imgurl  = i["images"][0]["url"].stringValue
+                       let release_date0 = i["release_date"].stringValue
+                       let release_Date = dateFormatter.date(from: release_date0)
+                       let release_date = dateFormat.string(from: release_Date!)
+                       let total_track = i["total_tracks"].intValue
+                   DispatchQueue.main.async {
+                       self.data.append(spotifyAlbumData(id: id, name: name, imgurl: imgurl, release_date: release_date, total_track: total_track))
+                   }
+               }
+               }.resume()
+            }.resume()
         }
-        }.resume()
         
         
     }
@@ -265,48 +334,278 @@ class getspotifyRelatedArtistsProfileData: ObservableObject {
     
     @Published var data = [spotifyProfileData]()
     init(){
-        var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/related-artists")!,timeoutInterval: Double.infinity)
-        request.addValue("Bearer BQDfubLZ565XSVAEqiSbXuBhWBBlavkw69TMor6yS4lR3lPyzEirKzoh8RH_RwLkrQNX8oZ1THCABnAs1t_EFbh1zzRj7-rTaz4S6R6VW1m4LtRyvtiPKL2FHIPumGBkcrTGU3Ul1K4oKmqRN-HmrmkoulUW", forHTTPHeaderField: "Authorization")
-
-        request.httpMethod = "GET"
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: request){(data, _, err) in
-            if err != nil{
-                
-                print((err?.localizedDescription)!)
-                return
-            }
-            
-            let json = try! JSON(data: data!)
-            let artists = json["artists"].array!
-            for i in artists{
-                let id = i["id"].stringValue
-                let name = i["name"].stringValue
-                let imgurl = i["images"][0]["url"].stringValue
-                let popularity = i["popularity"].intValue
-                let followers = i["followers"]["total"].intValue
-                let genres = i["genres"][0].stringValue
-                DispatchQueue.main.async {
-                    self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
-                }
-            }
-            
-        }.resume()
+        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let postData =  parameters.data(using: .utf8)
+        if let url = URL(string: "https://accounts.spotify.com/api/token"){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+             request.addValue("Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=", forHTTPHeaderField: "Authorization")
+               request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+               request.addValue("__Host-device_id=AQBPwRuubEaHLe3qzncUC_qxhNi3w6W_sXdPNQenUVz1lXG86eZs3u2hW3kbO2RZEz7-XaJA9gE6J-ZHFpnGNlfS-n3BCM6aYe4; __Secure-TPASESSION=AQCz/AtmF0i7zemzOI63JpokY8izsrk2ImSVSTMRoV9wFeKzaJ3fo6PpoDMKHrlkARSTo8l56+mTXLbOHybt/hF9KwIxAZ4C11Q=; csrf_token=AQDysFWy0rN9M1GtLlb6eRbkaTuqNeRmyQmw5VIxjzUTAVHxYgmK41DZhtFdkivrgIZcEgbMBqQFFmDlGQ", forHTTPHeaderField: "Cookie")
+            request.httpBody = postData
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                let json = try! JSON(data: data!)
+                let token = json["access_token"].stringValue
+               var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/related-artists")!,timeoutInterval: Double.infinity)
+               request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+               request.httpMethod = "GET"
+               let session = URLSession(configuration: .default)
+               session.dataTask(with: request){(data, _, err) in
+                   if err != nil{
+                       
+                       print((err?.localizedDescription)!)
+                       return
+                   }
+                   
+                   let json = try! JSON(data: data!)
+                   let artists = json["artists"].array!
+                   for i in artists{
+                       let id = i["id"].stringValue
+                       let name = i["name"].stringValue
+                       let imgurl = i["images"][0]["url"].stringValue
+                       let popularity = i["popularity"].intValue
+                       let followers = i["followers"]["total"].intValue
+                       let genres = i["genres"][0].stringValue
+                       DispatchQueue.main.async {
+                           self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
+                       }
+                   }
+                   
+               }.resume()
+            }.resume()
+        }
         
         
     }
 }
+
+class getspotifyTrackData: ObservableObject {
+    
+    @Published var data = [spotifyTrackData]()
+    init(){
+        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        let postData =  parameters.data(using: .utf8)
+        if let url = URL(string: "https://accounts.spotify.com/api/token"){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+             request.addValue("Basic NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=", forHTTPHeaderField: "Authorization")
+               request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+               request.addValue("__Host-device_id=AQBPwRuubEaHLe3qzncUC_qxhNi3w6W_sXdPNQenUVz1lXG86eZs3u2hW3kbO2RZEz7-XaJA9gE6J-ZHFpnGNlfS-n3BCM6aYe4; __Secure-TPASESSION=AQCz/AtmF0i7zemzOI63JpokY8izsrk2ImSVSTMRoV9wFeKzaJ3fo6PpoDMKHrlkARSTo8l56+mTXLbOHybt/hF9KwIxAZ4C11Q=; csrf_token=AQDysFWy0rN9M1GtLlb6eRbkaTuqNeRmyQmw5VIxjzUTAVHxYgmK41DZhtFdkivrgIZcEgbMBqQFFmDlGQ", forHTTPHeaderField: "Cookie")
+            request.httpBody = postData
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                let json = try! JSON(data: data!)
+                let token = json["access_token"].stringValue
+                var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/top-tracks?country=TW")!,timeoutInterval: Double.infinity)
+                request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+
+                request.httpMethod = "GET"
+                let session = URLSession(configuration: .default)
+                session.dataTask(with: request){(data, _, err) in
+                    if err != nil{
+                        
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                    
+                    let json = try! JSON(data: data!)
+                    let tracks = json["tracks"].array!
+                    for i in tracks{
+                        let id = i["id"].stringValue
+                        let name = i["name"].stringValue
+                        let imgurl  = i["album"]["images"][0]["url"].stringValue
+                        let artistArr = i["artists"].array!
+                        var artists = ""
+                        for j in artistArr{
+                            if artists == ""{
+                                artists = j["name"].stringValue
+                            }
+                            else {
+                                artists = artists + "," + j["name"].stringValue
+                            }
+                        }
+                        let external_urls = i["external_urls"]["spotify"].stringValue
+                    DispatchQueue.main.async {
+                        self.data.append(spotifyTrackData(id: id, name: name, artists: artists, imgurl: imgurl, external_urls: external_urls))
+                    }
+                }
+                }.resume()
+         
+         
+            }.resume()
+        }
+        
+        
+    }
+}
+
+
+
 //  top tracks: https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/top-tracks?country=TW
 
-
 /*
+ class getspotifyTrackData: ObservableObject {
+     
+     @Published var data = [spotifyTrackData]()
+     init(){
+         let token = test()
+         var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/top-tracks?country=TW")!,timeoutInterval: Double.infinity)
+         request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
 
-let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
-if let url = URL(string: " https://accounts.spotify.com/api/token"), let postData = "grant_type=refresh_token&refresh_token=\(refreshToken)".data(using: .utf8) {
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("NDQ5OWZjZjRmYTQwNGZhM2E1YTlhNDNjYzljYzIyZmE6ZGMzYWMyOGJhNGMwNDEyMTlhYzAzMjk5MWM3YzNmMTg=", forHTTPHeaderField: "Authorization: Basic")
-    request.httpBody = postData
-}
+         request.httpMethod = "GET"
+         let session = URLSession(configuration: .default)
+         session.dataTask(with: request){(data, _, err) in
+             if err != nil{
+                 
+                 print((err?.localizedDescription)!)
+                 return
+             }
+             
+             let json = try! JSON(data: data!)
+             let tracks = json["tracks"].array!
+             for i in tracks{
+                 let id = i["id"].stringValue
+                 let name = i["name"].stringValue
+                 let imgurl  = i["album"]["images"][0]["url"].stringValue
+                 let artistArr = i["artists"].array!
+                 var artists = ""
+                 for j in artistArr{
+                     if artists == ""{
+                         artists = j["name"].stringValue
+                     }
+                     else {
+                         artists = artists + "," + j["name"].stringValue
+                     }
+                 }
+                 let external_urls = i["external_urls"]["spotify"].stringValue
+             DispatchQueue.main.async {
+                 self.data.append(spotifyTrackData(id: id, name: name, artists: artists, imgurl: imgurl, external_urls: external_urls))
+             }
+         }
+         }.resume()
+         
+         
+     }
+ }
  
-*/
+
+ 
+
+ class getspotifyRelatedArtistsProfileData: ObservableObject {
+     
+     @Published var data = [spotifyProfileData]()
+     init(){
+         let token = test()
+         var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/related-artists")!,timeoutInterval: Double.infinity)
+         request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+         print(token)
+         request.httpMethod = "GET"
+         let session = URLSession(configuration: .default)
+         session.dataTask(with: request){(data, _, err) in
+             if err != nil{
+                 
+                 print((err?.localizedDescription)!)
+                 return
+             }
+             
+             let json = try! JSON(data: data!)
+             let artists = json["artists"].array!
+             for i in artists{
+                 let id = i["id"].stringValue
+                 let name = i["name"].stringValue
+                 let imgurl = i["images"][0]["url"].stringValue
+                 let popularity = i["popularity"].intValue
+                 let followers = i["followers"]["total"].intValue
+                 let genres = i["genres"][0].stringValue
+                 DispatchQueue.main.async {
+                     self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
+                 }
+             }
+             
+         }.resume()
+         
+         
+     }
+ }
+ 
+ class getspotifyAlbumData: ObservableObject {
+     
+     @Published var data = [spotifyAlbumData]()
+     init(){
+         
+         let token = test()
+         var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms/albums")!,timeoutInterval: Double.infinity)
+         request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+
+         request.httpMethod = "GET"
+         let session = URLSession(configuration: .default)
+         session.dataTask(with: request){(data, _, err) in
+             if err != nil{
+                 
+                 print((err?.localizedDescription)!)
+                 return
+             }
+             
+             let json = try! JSON(data: data!)
+             let item = json["items"].array!
+             for i in item{
+                 let dateFormatter = DateFormatter()
+                 dateFormatter.dateFormat = "yyyy-MM-dd"
+                 let dateFormat = DateFormatter()
+                 dateFormat.dateFormat = "yyyy/MM/dd"
+                 let id = i["id"].stringValue
+                 let name = i["name"].stringValue
+                 let imgurl  = i["images"][0]["url"].stringValue
+                 let release_date0 = i["release_date"].stringValue
+                 let release_Date = dateFormatter.date(from: release_date0)
+                 let release_date = dateFormat.string(from: release_Date!)
+                 let total_track = i["total_tracks"].intValue
+             DispatchQueue.main.async {
+                 self.data.append(spotifyAlbumData(id: id, name: name, imgurl: imgurl, release_date: release_date, total_track: total_track))
+             }
+         }
+         }.resume()
+         
+         
+     }
+ }
+ 
+ class getspotifyProfileData: ObservableObject {
+     
+     @Published var data = [spotifyProfileData]()
+     init(){
+         
+
+         let token = test()
+         var request = URLRequest(url: URL(string: "https://api.spotify.com/v1/artists/1HY2Jd0NmPuamShAr6KMms")!,timeoutInterval: Double.infinity)
+         request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+         
+         request.httpMethod = "GET"
+         let session = URLSession(configuration: .default)
+         session.dataTask(with: request){(data, _, err) in
+             if err != nil{
+                 
+                 print((err?.localizedDescription)!)
+                 return
+             }
+             
+             let json = try! JSON(data: data!)
+             let id = json["id"].stringValue
+             let name = json["name"].stringValue
+             let imgurl = json["images"][0]["url"].stringValue
+             let popularity = json["popularity"].intValue
+             let followers = json["followers"]["total"].intValue
+             let genres0 = json["genres"][0].stringValue
+             let genres1 = json["genres"][1].stringValue
+             let genres = genres0+","+genres1
+             DispatchQueue.main.async {
+                 self.data.append(spotifyProfileData(id: id, name: name, imgurl: imgurl, popularity: popularity,followers: followers,genres:genres))
+             }
+         }.resume()
+         
+         
+     }
+ }
+ 
+ */

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4701842E24A20EDF00FF79E3 /* igData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701842D24A20EDF00FF79E3 /* igData.swift */; };
 		475A237F249915C30024DBB4 /* spotifyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A237E249915C30024DBB4 /* spotifyData.swift */; };
 		475A2381249918660024DBB4 /* spotifyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2380249918660024DBB4 /* spotifyUIView.swift */; };
 		478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B5CAC2490DF04004C0D81 /* tabView.swift */; };
@@ -20,11 +21,13 @@
 		478DF8C52487C43300CE98EE /* twitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF8C42487C43300CE98EE /* twitterData.swift */; };
 		478DF8C72487C93E00CE98EE /* twitterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF8C62487C93E00CE98EE /* twitterUIView.swift */; };
 		478DF8C9248A594B00CE98EE /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF8C8248A594B00CE98EE /* SafariView.swift */; };
+		47A79875249FA06C00EDA444 /* igUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A79874249FA06C00EDA444 /* igUIView.swift */; };
 		773636197AAED9C0E1706D22 /* Pods_gaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB30E3B9CA9725C036DAC95D /* Pods_gaga.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B040530F0225E7636A26353 /* Pods-gaga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gaga.release.xcconfig"; path = "Target Support Files/Pods-gaga/Pods-gaga.release.xcconfig"; sourceTree = "<group>"; };
+		4701842D24A20EDF00FF79E3 /* igData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = igData.swift; sourceTree = "<group>"; };
 		475A237E249915C30024DBB4 /* spotifyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotifyData.swift; sourceTree = "<group>"; };
 		475A2380249918660024DBB4 /* spotifyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotifyUIView.swift; sourceTree = "<group>"; };
 		478B5CAC2490DF04004C0D81 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		478DF8C42487C43300CE98EE /* twitterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = twitterData.swift; path = /Users/user17/Desktop/gaga/gaga/twitterData.swift; sourceTree = "<absolute>"; };
 		478DF8C62487C93E00CE98EE /* twitterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterUIView.swift; sourceTree = "<group>"; };
 		478DF8C8248A594B00CE98EE /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		47A79874249FA06C00EDA444 /* igUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = igUIView.swift; sourceTree = "<group>"; };
 		873B79F0F8EEA68E3DAB467C /* Pods-gaga.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gaga.debug.xcconfig"; path = "Target Support Files/Pods-gaga/Pods-gaga.debug.xcconfig"; sourceTree = "<group>"; };
 		EB30E3B9CA9725C036DAC95D /* Pods_gaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -93,6 +97,8 @@
 				478DF8C62487C93E00CE98EE /* twitterUIView.swift */,
 				475A237E249915C30024DBB4 /* spotifyData.swift */,
 				475A2380249918660024DBB4 /* spotifyUIView.swift */,
+				4701842D24A20EDF00FF79E3 /* igData.swift */,
+				47A79874249FA06C00EDA444 /* igUIView.swift */,
 				478DF8C8248A594B00CE98EE /* SafariView.swift */,
 				478DF2E52477955A00E19AC6 /* AppDelegate.swift */,
 				478DF2E72477955A00E19AC6 /* SceneDelegate.swift */,
@@ -240,8 +246,10 @@
 				478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */,
 				475A237F249915C30024DBB4 /* spotifyData.swift in Sources */,
 				478DF8C72487C93E00CE98EE /* twitterUIView.swift in Sources */,
+				4701842E24A20EDF00FF79E3 /* igData.swift in Sources */,
 				478DF2FC247797D500E19AC6 /* redditUIView.swift in Sources */,
 				478DF2FA247796F200E19AC6 /* redditData.swift in Sources */,
+				47A79875249FA06C00EDA444 /* igUIView.swift in Sources */,
 				478DF8C52487C43300CE98EE /* twitterData.swift in Sources */,
 				478DF8C9248A594B00CE98EE /* SafariView.swift in Sources */,
 				475A2381249918660024DBB4 /* spotifyUIView.swift in Sources */,

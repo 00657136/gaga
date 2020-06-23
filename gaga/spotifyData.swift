@@ -24,6 +24,14 @@ struct spotifyAlbumData: Identifiable {
     var release_date: String
     var total_track: Int
 }
+
+struct spotifyTrackData: Identifiable {
+    var id: String
+    var name: String
+    var artists: String
+    var imgurl: String
+    var external_urls: String
+}
 //spotify token
 /*GET https://accounts.spotify.com/authorize?client_id=4499fcf4fa404fa3a5a9a43cc9cc22fa&response_type=code&redirect_uri=https://github.com/00657136/gaga/tree/master/redirect-callback  */
 

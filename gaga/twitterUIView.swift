@@ -13,11 +13,14 @@ struct twitterUIView: View {
     @ObservedObject var results = gettwitterProfileData()
     @ObservedObject var tweetresults = gettweetData()
     var body: some View {
+         ScrollView(.vertical, showsIndicators: false){
+            //ZStack(alignment: .top){
+            //Color(red: 0.081, green: 0.125, blue: 0.17).frame(minWidth: 0, maxWidth: .infinity)
+                
+                
+        ForEach(results.data){result in
             ZStack(alignment: .top){
             Color(red: 0.081, green: 0.125, blue: 0.17).frame(minWidth: 0, maxWidth: .infinity)
-                
-                VStack(alignment: .leading){
-        ForEach(results.data){result in
                 VStack(alignment: .leading, spacing: 10){
                     
                     profileView(profile_banner_url: result.profile_banner_url, name: result.name, screen_name: result.screen_name, description: result.description, url: result.url, profile_image_url_https: result.profile_image_url_https, display_url: result.display_url,created_at: result.created_at)
@@ -26,16 +29,20 @@ struct twitterUIView: View {
                         Text(result.followers_count).foregroundColor(Color(.white)).fontWeight(.medium)+Text(" 跟隨者").font(.system(size: 15)).foregroundColor(Color(.gray)).fontWeight(.medium)
                     }.offset(x:10,y:-UIScreen.main.bounds.width/8+10)
             }
+            }
         }
             
-                List(tweetresults.data){result in
-                    VStack{
+                ForEach(tweetresults.data){result in
+                    VStack(alignment: .leading){
                         
                         
                         HStack(alignment: .top,spacing:20){
-
-                            WebImage(url: URL(string: result.profile_image_url_https )!).resizable().scaledToFit().frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6).cornerRadius(UIScreen.main.bounds.width/6)
-
+                            ZStack{
+                                Circle()
+                                    .fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.0, green: 0.436, blue: 0.952), Color.init(red: 0.01, green: 0.719, blue: 0.701)]), startPoint: UnitPoint(x: 0, y: 1), endPoint: UnitPoint(x: 1, y: 0)))
+                                    .frame(width:UIScreen.main.bounds.width/6+7,height:UIScreen.main.bounds.width/6+7)
+                                WebImage(url: URL(string: result.profile_image_url_https )!).resizable().scaledToFit().frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6).cornerRadius(UIScreen.main.bounds.width/6)
+                            }
                             VStack(alignment: .leading,spacing: 10){
                                 Text(result.name).fontWeight(.heavy)+Text(" @"+result.screen_name).foregroundColor(Color.gray)
                                 Text(result.text).fontWeight(.medium).fixedSize(horizontal: false, vertical: true)
@@ -51,18 +58,18 @@ struct twitterUIView: View {
                                     Text(result.created_at).font(.system(size: 15)).foregroundColor(Color(red: 0.213, green: 0.285, blue: 0.34))
                                 }
                             }
-                        }
-                            //img
-                            //fav & retweet
-                        
-                            Spacer(minLength: 10)
+                           Spacer()
+                        }.padding(.leading)
+                            .padding(.bottom)
 
                     }
-                }.onAppear {
-                   UITableView.appearance().separatorColor = .clear
                 }
-                }
-            }.edgesIgnoringSafeArea(.bottom)
+//                .onAppear {
+//                   UITableView.appearance().separatorColor = .clear
+//                }
+                
+            //}
+    }.edgesIgnoringSafeArea(.bottom)
     
     }
 }
