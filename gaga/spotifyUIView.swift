@@ -213,7 +213,7 @@ struct spotifyUIView: View {
         
         
         }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 207/255, green: 247/255, blue: 177/255), Color.init(red: 85/255, green: 228/255, blue: 201/255)]), startPoint: UnitPoint(x: 0, y: 1), endPoint: UnitPoint(x: 1, y: 0)))
-        .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.top)
         
     }
 }

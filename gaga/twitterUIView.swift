@@ -69,7 +69,7 @@ struct twitterUIView: View {
 //                }
                 
             //}
-    }.edgesIgnoringSafeArea(.bottom)
+    }//.edgesIgnoringSafeArea(.bottom)
     
     }
 }
