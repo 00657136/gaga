@@ -11,10 +11,9 @@ import SwiftUI
 struct tabView: View {
     var body: some View {
         TabView{
-            
-            spotifyUIView().tabItem{
-                Image("spotify")
-                Text("Spotify")
+            youtubeUIView().tabItem{
+                Image("youtube")
+                Text("Youtube")
             }
             twitterUIView().tabItem{
                 Image("twitter")
@@ -24,10 +23,14 @@ struct tabView: View {
                 Image("reddit")
                 Text("Reddit")
             }
-            igUIView().tabItem{
-                Image("ig")
-                Text("Instagram")
+            spotifyUIView().tabItem{
+                Image("spotify")
+                Text("Spotify")
             }
+//            igUIView().tabItem{
+//                Image("ig")
+//                Text("Instagram")
+//            }
             
         }.accentColor(.black)
     }

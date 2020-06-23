@@ -14,10 +14,7 @@ struct twitterUIView: View {
     @ObservedObject var tweetresults = gettweetData()
     var body: some View {
          ScrollView(.vertical, showsIndicators: false){
-            //ZStack(alignment: .top){
-            //Color(red: 0.081, green: 0.125, blue: 0.17).frame(minWidth: 0, maxWidth: .infinity)
-                
-                
+   
         ForEach(results.data){result in
             ZStack(alignment: .top){
             Color(red: 0.081, green: 0.125, blue: 0.17).frame(minWidth: 0, maxWidth: .infinity)
@@ -64,11 +61,7 @@ struct twitterUIView: View {
 
                     }
                 }
-//                .onAppear {
-//                   UITableView.appearance().separatorColor = .clear
-//                }
-                
-            //}
+
     }//.edgesIgnoringSafeArea(.bottom)
     
     }

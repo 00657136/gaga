@@ -11,6 +11,8 @@
 		4701843024A2A76300FF79E3 /* igPostUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701842F24A2A76300FF79E3 /* igPostUIView.swift */; };
 		475A237F249915C30024DBB4 /* spotifyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A237E249915C30024DBB4 /* spotifyData.swift */; };
 		475A2381249918660024DBB4 /* spotifyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2380249918660024DBB4 /* spotifyUIView.swift */; };
+		478749E224A2B695001C2D44 /* youtubeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E124A2B695001C2D44 /* youtubeUIView.swift */; };
+		478749E424A2C101001C2D44 /* youtubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E324A2C101001C2D44 /* youtubeData.swift */; };
 		478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B5CAC2490DF04004C0D81 /* tabView.swift */; };
 		478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E52477955A00E19AC6 /* AppDelegate.swift */; };
 		478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E72477955A00E19AC6 /* SceneDelegate.swift */; };
@@ -32,6 +34,8 @@
 		4701842F24A2A76300FF79E3 /* igPostUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = igPostUIView.swift; sourceTree = "<group>"; };
 		475A237E249915C30024DBB4 /* spotifyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotifyData.swift; sourceTree = "<group>"; };
 		475A2380249918660024DBB4 /* spotifyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotifyUIView.swift; sourceTree = "<group>"; };
+		478749E124A2B695001C2D44 /* youtubeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeUIView.swift; sourceTree = "<group>"; };
+		478749E324A2C101001C2D44 /* youtubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeData.swift; sourceTree = "<group>"; };
 		478B5CAC2490DF04004C0D81 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
 		478DF2E22477955A00E19AC6 /* gaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		478DF2E52477955A00E19AC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				4701842D24A20EDF00FF79E3 /* igData.swift */,
 				47A79874249FA06C00EDA444 /* igUIView.swift */,
 				4701842F24A2A76300FF79E3 /* igPostUIView.swift */,
+				478749E324A2C101001C2D44 /* youtubeData.swift */,
+				478749E124A2B695001C2D44 /* youtubeUIView.swift */,
 				478DF8C8248A594B00CE98EE /* SafariView.swift */,
 				478DF2E52477955A00E19AC6 /* AppDelegate.swift */,
 				478DF2E72477955A00E19AC6 /* SceneDelegate.swift */,
@@ -246,6 +252,7 @@
 			files = (
 				478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */,
 				478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */,
+				478749E224A2B695001C2D44 /* youtubeUIView.swift in Sources */,
 				478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */,
 				475A237F249915C30024DBB4 /* spotifyData.swift in Sources */,
 				478DF8C72487C93E00CE98EE /* twitterUIView.swift in Sources */,
@@ -254,6 +261,7 @@
 				478DF2FA247796F200E19AC6 /* redditData.swift in Sources */,
 				47A79875249FA06C00EDA444 /* igUIView.swift in Sources */,
 				478DF8C52487C43300CE98EE /* twitterData.swift in Sources */,
+				478749E424A2C101001C2D44 /* youtubeData.swift in Sources */,
 				4701843024A2A76300FF79E3 /* igPostUIView.swift in Sources */,
 				478DF8C9248A594B00CE98EE /* SafariView.swift in Sources */,
 				475A2381249918660024DBB4 /* spotifyUIView.swift in Sources */,
