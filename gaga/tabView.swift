@@ -27,10 +27,10 @@ struct tabView: View {
                 Image("reddit")
                 Text("Reddit")
             }
-//            igUIView().tabItem{
-//                Image("ig")
-//                Text("Instagram")
-//            }
+            igUIView().tabItem{
+                Image("ig")
+                Text("Instagram")
+            }
             
         }.accentColor(.black)
     }

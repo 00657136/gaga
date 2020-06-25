@@ -37,10 +37,14 @@ struct spotifyTrackData: Identifiable {
 
 /*
  
+ curl -H "Authorization: Basic ODNmYzRiMTYxMDNiNDlmMjkyZjllY2I5ODg0ZjY5ZDE6MjM3MDk1OGRlZjQwNDNkYWIzMDNkOWZlMzJkNzg0MDA=" -d grant_type=authorization_code -d code=AQDQedtX3gvrb0ZfhZuVqUMihgDe-2Q-lG4YdGx73C88THPAXnVjE94snZ0cSsMzjN3nWovpW2N4lgfnwn6jbMLgs_2OvK6imkWVxtB0bvd-86Mk43sleGUdKrD9gPbLRLU_tfY_aJZTId0rkLzmPO250Xf02TSiJiC-2g8LxGtMkoay_PDLqXfRBScugCL_RATPA6ZkLu9zmk4 -d redirect_uri=https%3A%2F%2Fgithub.com%2F00657136%2Fgaga https://accounts.spotify.com/api/token
+ 
  4499fcf4fa404fa3a5a9a43cc9cc22fa:dc3ac28ba4c041219ac032991c7c3f18
 
  playlist-read-private
  AQCLozwYq17us0Ghhp_tQc8MuQqHkhobtkCOmMEHYVzv-XBgwUyTntxug_5ci6UjoSG7DokQbQz24MEszFvi0tdntDvV2JB0SumhD8vAiGhikObFkh_voIpAzE6nOOjrFG4-mJlBt6b81M_EETAKQZ1anvyV5y-gNvWPNFTAnrqnboJ79lJd1E2mHJzoWs3GMYSLQQ3HRv4BEpRYRR-Fbk8d2AziF9E
+ 
+ https://accounts.spotify.com/authorize?client_id=83fc4b16103b49f292f9ecb9884f69d1&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com%2F00657136%2Fgaga&scope=playlist-read-private
  
  GET https://accounts.spotify.com/authorize?client_id=4499fcf4fa404fa3a5a9a43cc9cc22fa&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com%2F00657136%2Fgaga%2Ftree%2Fmaster&scope=playlist-read-private
  

@@ -240,7 +240,7 @@ class getspotifyProfileData: ObservableObject {
     
     @Published var data = [spotifyProfileData]()
     init(){
-         let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+         
         let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
         let postData =  parameters.data(using: .utf8)
         if let url = URL(string: "https://accounts.spotify.com/api/token"){
@@ -290,7 +290,7 @@ class getspotifyAlbumData: ObservableObject {
     @Published var data = [spotifyAlbumData]()
     init(){
         
-        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        
         let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
         let postData =  parameters.data(using: .utf8)
         if let url = URL(string: "https://accounts.spotify.com/api/token"){
@@ -345,7 +345,7 @@ class getspotifyRelatedArtistsProfileData: ObservableObject {
     
     @Published var data = [spotifyProfileData]()
     init(){
-        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        
         let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
         let postData =  parameters.data(using: .utf8)
         if let url = URL(string: "https://accounts.spotify.com/api/token"){
@@ -395,7 +395,7 @@ class getspotifyTrackData: ObservableObject {
     
     @Published var data = [spotifyTrackData]()
     init(){
-        let refreshToken = "AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
+        
         let parameters = "grant_type=refresh_token&refresh_token=AQCnSfyIOtgnD2xY-bINyEqwPnYeyYgiDVO665OfOz5FKeedZqQg5KZlNKaQUSu1nPZ2POD9PNYrgRfpz2oMSciz38Huj99_sDJc2CNt-eoes4Sl9XuSVhiYGEEnNnd8Rzc"
         let postData =  parameters.data(using: .utf8)
         if let url = URL(string: "https://accounts.spotify.com/api/token"){

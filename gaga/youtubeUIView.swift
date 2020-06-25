@@ -133,7 +133,7 @@ struct youtubeUIView_Previews: PreviewProvider {
 class getyoutubePlaylistData: ObservableObject {
     @Published var data = [youtubePlaylistData]()
     init(){
-        let url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=UUNL1ZadSjHpjm4q9j2sVtOA&key=AIzaSyA7upl5koOotjoyqOTE5S7jYrT1bFXH4jE&maxResults=50"
+        let url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=UUNL1ZadSjHpjm4q9j2sVtOA&key=AIzaSyB3_kr30K9oyQ4trq0lcJlzngaZzY8dbVU&maxResults=50"
         let session = URLSession(configuration: .default)
         session.dataTask(with: URL(string: url)!){(data, _, err) in
             if err != nil{
@@ -169,7 +169,7 @@ class getyoutubePlaylistData: ObservableObject {
 class getyoutubeChannelData: ObservableObject {
     @Published var data = [youtubeChannelData]()
     init(){
-        let url = "https://www.googleapis.com/youtube/v3/channels?part=brandingSettings,snippet,contentDetails,statistics,status&id=UCNL1ZadSjHpjm4q9j2sVtOA&key=AIzaSyA7upl5koOotjoyqOTE5S7jYrT1bFXH4jE"
+        let url = "https://www.googleapis.com/youtube/v3/channels?part=brandingSettings,snippet,contentDetails,statistics,status&id=UCNL1ZadSjHpjm4q9j2sVtOA&key=AIzaSyB3_kr30K9oyQ4trq0lcJlzngaZzY8dbVU"
         let session = URLSession(configuration: .default)
         session.dataTask(with: URL(string: url)!){(data, _, err) in
             if err != nil{
