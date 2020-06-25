@@ -19,13 +19,13 @@ struct tabView: View {
                 Image("twitter")
                 Text("Twitter")
             }
-            redditUIView().tabItem{
-                Image("reddit")
-                Text("Reddit")
-            }
             spotifyUIView().tabItem{
                 Image("spotify")
                 Text("Spotify")
+            }
+            redditUIView().tabItem{
+                Image("reddit")
+                Text("Reddit")
             }
 //            igUIView().tabItem{
 //                Image("ig")

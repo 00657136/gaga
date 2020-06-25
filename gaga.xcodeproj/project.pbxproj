@@ -13,6 +13,7 @@
 		475A2381249918660024DBB4 /* spotifyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2380249918660024DBB4 /* spotifyUIView.swift */; };
 		478749E224A2B695001C2D44 /* youtubeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E124A2B695001C2D44 /* youtubeUIView.swift */; };
 		478749E424A2C101001C2D44 /* youtubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E324A2C101001C2D44 /* youtubeData.swift */; };
+		478749E624A4D569001C2D44 /* youtubeVideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E524A4D569001C2D44 /* youtubeVideoUIView.swift */; };
 		478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B5CAC2490DF04004C0D81 /* tabView.swift */; };
 		478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E52477955A00E19AC6 /* AppDelegate.swift */; };
 		478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E72477955A00E19AC6 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		475A2380249918660024DBB4 /* spotifyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotifyUIView.swift; sourceTree = "<group>"; };
 		478749E124A2B695001C2D44 /* youtubeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeUIView.swift; sourceTree = "<group>"; };
 		478749E324A2C101001C2D44 /* youtubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeData.swift; sourceTree = "<group>"; };
+		478749E524A4D569001C2D44 /* youtubeVideoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeVideoUIView.swift; sourceTree = "<group>"; };
 		478B5CAC2490DF04004C0D81 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
 		478DF2E22477955A00E19AC6 /* gaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		478DF2E52477955A00E19AC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4701842F24A2A76300FF79E3 /* igPostUIView.swift */,
 				478749E324A2C101001C2D44 /* youtubeData.swift */,
 				478749E124A2B695001C2D44 /* youtubeUIView.swift */,
+				478749E524A4D569001C2D44 /* youtubeVideoUIView.swift */,
 				478DF8C8248A594B00CE98EE /* SafariView.swift */,
 				478DF2E52477955A00E19AC6 /* AppDelegate.swift */,
 				478DF2E72477955A00E19AC6 /* SceneDelegate.swift */,
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				478749E624A4D569001C2D44 /* youtubeVideoUIView.swift in Sources */,
 				478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */,
 				478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */,
 				478749E224A2B695001C2D44 /* youtubeUIView.swift in Sources */,

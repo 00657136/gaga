@@ -92,12 +92,16 @@ struct igUIView: View {
                     ForEach(0..<collec.count){ row in
                         HStack{
                             ForEach(collec[row]){ collecs in
-                                NavigationLink(destination: igPostUIView()){
-                                    WebImage(url: URL(string: collecs.thumbnail)!)
-                                        .renderingMode(.original)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width:UIScreen.main.bounds.width/3,height: UIScreen.main.bounds.width/3)
+                                NavigationLink(destination: igPostUIView(__typename: collecs.__typename,shortcode: collecs.shortcode,text: collecs.text,display_url: collecs.display_url,comment: collecs.comment,liked: collecs.liked)){
+                                    Button(action: {
+                                        //returnshortcode(scode: collecs.shortcode)
+                                    }){
+                                        WebImage(url: URL(string: collecs.thumbnail)!)
+                                            .renderingMode(.original)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width:UIScreen.main.bounds.width/3,height: UIScreen.main.bounds.width/3)
+                                    }
                                 }
                             }
                         }
@@ -168,8 +172,10 @@ class getinstagramPostData: ObservableObject {
                 let comment = i["node"]["edge_media_to_comment"]["count"].intValue
                 let liked = i["node"]["edge_liked_by"]["count"].intValue
                 let thumbnail = i["node"]["thumbnail_resources"][4]["src"].stringValue
+                let __typename = i["node"]["__typename"].stringValue
+                let shortcode = i["node"]["shortcode"].stringValue
                 DispatchQueue.main.async {
-                    self.data.append(instagramPostData(id: id, display_url: display_url, text: text, comment: comment, liked: liked, thumbnail: thumbnail))
+                    self.data.append(instagramPostData(id: id, display_url: display_url, text: text, comment: comment, liked: liked, thumbnail: thumbnail,__typename: __typename,shortcode: shortcode))
                 }
             }
             
@@ -187,6 +193,10 @@ extension Array{
     }
 }
 
+//func returnshortcode(scode: String) -> String {
+//    return scode
+//}
+
 //CBLoGTZFPgL https://www.instagram.com/p/CBLoGTZFPgL/media/?size=l
 
 /*
@@ -197,8 +207,8 @@ extension Array{
  
  <video class="tWeCl" controls="" controlslist="nodownload" playsinline="" poster="https://scontent-tpe1-1.cdninstagram.com/v/t51.2885-15/e35/102665162_675283306586646_3411576164114691128_n.jpg?_nc_ht=scontent-tpe1-1.cdninstagram.com&amp;_nc_cat=1&amp;_nc_ohc=NNFXZQ1JefEAX_iRsc2&amp;oh=647b6b16013955d9ffd4836a916670e6&amp;oe=5EF47FB3" preload="metadata" type="video/mp4" src="https://scontent-tpe1-1.cdninstagram.com/v/t50.2886-16/103435192_120999152963452_8029942739370787312_n.mp4?_nc_ht=scontent-tpe1-1.cdninstagram.com&amp;_nc_cat=104&amp;_nc_ohc=RwIuzniOYSoAX-Y_Ubm&amp;oe=5EF4532B&amp;oh=b042a8245dc3f1acc4aa86c9199ad2df"></video>
  
- 
- 
+ https://www.instagram.com/ladygaga/?__a=1&end_cursor=QVFEQjUwNkZEQU5wbngtdFVlRU5vdzhoVUl1M0ZYZF9HZlBkQzh6MG5qNVhLYTlYRG9XSTg5dE1ETlg0R01pSHVkYTBhaWlia3kxTFNQQzVFWjFxcUs2MA==
+ QVFEQjUwNkZEQU5wbngtdFVlRU5vdzhoVUl1M0ZYZF9HZlBkQzh6MG5qNVhLYTlYRG9XSTg5dE1ETlg0R01pSHVkYTBhaWlia3kxTFNQQzVFWjFxcUs2MA==
  
  
  */

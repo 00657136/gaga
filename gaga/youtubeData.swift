@@ -14,4 +14,17 @@ struct youtubePlaylistData : Identifiable {
     var thumbnail : String
     var channelTitle : String
     var publishedAt : String
+    var videoId : String
+}
+
+struct youtubeChannelData :  Identifiable{
+    var id : String
+    var bannerMobileExtraHdImageUrl : String
+    var thumbnails : String
+    var title : String
+    var subscriberCount : String
+    var description : String
+    var publishedAt : String
+    var viewCount : String
+    var videoCount : String
 }

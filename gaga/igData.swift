@@ -28,4 +28,18 @@ struct instagramPostData : Identifiable {
     var comment : Int
     var liked : Int
     var thumbnail : String
+    var __typename : String
+    var shortcode : String
+}
+
+struct instagramVideoData: Identifiable {
+    var id : String
+    var video_url : String
+    var text : String
+}
+
+struct instagramSideCarData: Identifiable {
+    var id : String
+    var display_url : String
+    
 }
