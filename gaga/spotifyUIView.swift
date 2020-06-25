@@ -68,7 +68,8 @@ struct spotifyUIView: View {
                 
                 //TopTracks****************************
             Text("熱門歌曲")
-            .frame(minWidth: 0, maxWidth: .infinity)
+                .foregroundColor(Color(.black))
+                .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color.init(red: 187, green: 185, blue: 172))
             VStack(alignment: .leading, spacing: 10){
                 ForEach(TopTracks.data){track in
@@ -79,9 +80,11 @@ struct spotifyUIView: View {
                             .frame(width:UIScreen.main.bounds.width/6,height: UIScreen.main.bounds.width/6)
                         VStack(alignment: .leading, spacing: 5){
                             Text(track.name)
+                                .foregroundColor(Color(.black))
                                 .fontWeight(.bold)
                                 .font(.system(size: 20))
                             Text(track.artists)
+                                .foregroundColor(Color(.black))
                                 .font(.system(size: 15))
                         }
                         Spacer()
@@ -104,7 +107,8 @@ struct spotifyUIView: View {
             
                 //album******************************
             Text("歷年專輯")
-            .frame(minWidth: 0, maxWidth: .infinity)
+                .foregroundColor(Color(.black))
+                .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color.init(red: 187, green: 185, blue: 172))
             
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -124,8 +128,10 @@ struct spotifyUIView: View {
                                         .scaledToFit()
                                         .frame(width:UIScreen.main.bounds.width/25)
                                     Text("發行日期：")
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                     Text(album.release_date)
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                 }
                                 HStack{
@@ -134,8 +140,10 @@ struct spotifyUIView: View {
                                         .scaledToFit()
                                         .frame(width:UIScreen.main.bounds.width/25)
                                     Text("歌曲數：")
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                     Text("\(album.total_track)")
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                 }
                                 HStack{
@@ -144,8 +152,10 @@ struct spotifyUIView: View {
                                     .scaledToFit()
                                     .frame(width:UIScreen.main.bounds.width/25)
                                     Text("專輯名稱：")
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                     Text(album.name)
+                                        .foregroundColor(Color(.black))
                                         .font(.system(size: 10))
                                         .padding(5)
                                         //.background(Color.white)
@@ -167,7 +177,8 @@ struct spotifyUIView: View {
                 //album******************************
                 //relatedArtists*********************
             Text("相關歌手")
-            .frame(minWidth: 0, maxWidth: .infinity)
+                .foregroundColor(Color(.black))
+                .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color.init(red: 187, green: 185, blue: 172))
             VStack(alignment: .leading,spacing: 10){
             ForEach(relatedArtists.data){relatedArtist in

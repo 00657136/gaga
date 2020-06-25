@@ -14,6 +14,7 @@
 		478749E224A2B695001C2D44 /* youtubeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E124A2B695001C2D44 /* youtubeUIView.swift */; };
 		478749E424A2C101001C2D44 /* youtubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E324A2C101001C2D44 /* youtubeData.swift */; };
 		478749E624A4D569001C2D44 /* youtubeVideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478749E524A4D569001C2D44 /* youtubeVideoUIView.swift */; };
+		478749E824A52818001C2D44 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478749E724A52818001C2D44 /* Launch Screen.storyboard */; };
 		478B5CAD2490DF04004C0D81 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B5CAC2490DF04004C0D81 /* tabView.swift */; };
 		478DF2E62477955A00E19AC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E52477955A00E19AC6 /* AppDelegate.swift */; };
 		478DF2E82477955A00E19AC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DF2E72477955A00E19AC6 /* SceneDelegate.swift */; };
@@ -38,8 +39,9 @@
 		478749E124A2B695001C2D44 /* youtubeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeUIView.swift; sourceTree = "<group>"; };
 		478749E324A2C101001C2D44 /* youtubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeData.swift; sourceTree = "<group>"; };
 		478749E524A4D569001C2D44 /* youtubeVideoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtubeVideoUIView.swift; sourceTree = "<group>"; };
+		478749E724A52818001C2D44 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		478B5CAC2490DF04004C0D81 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
-		478DF2E22477955A00E19AC6 /* gaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		478DF2E22477955A00E19AC6 /* Lady Gaga API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lady Gaga API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		478DF2E52477955A00E19AC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		478DF2E72477955A00E19AC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		478DF2EB2477955C00E19AC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		478DF2E32477955A00E19AC6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				478DF2E22477955A00E19AC6 /* gaga.app */,
+				478DF2E22477955A00E19AC6 /* Lady Gaga API.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +100,7 @@
 		478DF2E42477955A00E19AC6 /* gaga */ = {
 			isa = PBXGroup;
 			children = (
+				478749E724A52818001C2D44 /* Launch Screen.storyboard */,
 				478B5CAC2490DF04004C0D81 /* tabView.swift */,
 				478DF2F9247796F200E19AC6 /* redditData.swift */,
 				478DF2FB247797D500E19AC6 /* redditUIView.swift */,
@@ -157,7 +160,7 @@
 			);
 			name = gaga;
 			productName = gaga;
-			productReference = 478DF2E22477955A00E19AC6 /* gaga.app */;
+			productReference = 478DF2E22477955A00E19AC6 /* Lady Gaga API.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -200,6 +203,7 @@
 			files = (
 				478DF2F22477955C00E19AC6 /* LaunchScreen.storyboard in Resources */,
 				478DF2EF2477955C00E19AC6 /* Preview Assets.xcassets in Resources */,
+				478749E824A52818001C2D44 /* Launch Screen.storyboard in Resources */,
 				478DF2EC2477955C00E19AC6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,14 +411,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"gaga/Preview Content\"";
+				DEVELOPMENT_TEAM = SMVS7ZRSRH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = gaga/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NTOU.gaga;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lady Gaga API";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,14 +433,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"gaga/Preview Content\"";
+				DEVELOPMENT_TEAM = SMVS7ZRSRH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = gaga/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NTOU.gaga;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lady Gaga API";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
