@@ -89,19 +89,25 @@ struct igUIView: View {
                             
                         }.padding(.vertical)
                     }
+                    
+                    
                     ForEach(0..<collec.count){ row in
                         HStack{
                             ForEach(collec[row]){ collecs in
-                                NavigationLink(destination: igPostUIView(__typename: collecs.__typename,shortcode: collecs.shortcode,text: collecs.text,display_url: collecs.display_url,comment: collecs.comment,liked: collecs.liked)){
-                                    Button(action: {
-                                        //returnshortcode(scode: collecs.shortcode)
-                                    }){
+                                NavigationLink(destination: igPostUIView(__typename: collecs.__typename,
+                                                                         shortcode: collecs.shortcode,
+                                                                         text: collecs.text,
+                                                                         display_url: collecs.display_url,
+                                                                         comment: collecs.comment,
+                                                                         liked: collecs.liked
+                                )){
+                                    
                                         WebImage(url: URL(string: collecs.thumbnail)!)
                                             .renderingMode(.original)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width:UIScreen.main.bounds.width/3,height: UIScreen.main.bounds.width/3)
-                                    }
+                                    
                                 }
                             }
                         }
@@ -155,6 +161,7 @@ class getinstagramProfileData : ObservableObject {
 
 class getinstagramPostData: ObservableObject {
     @Published var data = [instagramPostData]()
+    //@Published var videoData : instagramVideoData
     init(){
         let url = "https://www.instagram.com/ladygaga/?__a=1"
         let session = URLSession(configuration: .default)
@@ -174,6 +181,8 @@ class getinstagramPostData: ObservableObject {
                 let thumbnail = i["node"]["thumbnail_resources"][4]["src"].stringValue
                 let __typename = i["node"]["__typename"].stringValue
                 let shortcode = i["node"]["shortcode"].stringValue
+                
+               
                 DispatchQueue.main.async {
                     self.data.append(instagramPostData(id: id, display_url: display_url, text: text, comment: comment, liked: liked, thumbnail: thumbnail,__typename: __typename,shortcode: shortcode))
                 }
@@ -184,6 +193,27 @@ class getinstagramPostData: ObservableObject {
         
     }
 }
+
+//func returnVideoData(shortcode: String)-> instagramVideoData{
+//    var videoData : instagramVideoData
+//    let url = "https://www.instagram.com/p/" + shortcode + "/?__a=1"
+//    let session = URLSession(configuration: .default)
+//    session.dataTask(with: URL(string: url)!){(data, _, err) in
+//                            if err != nil{
+//                                print((err?.localizedDescription)!)
+//                                return
+//                            }
+//                            let json = try! JSON(data: data!)
+//                            let id = json["graphql"]["shortcode_media"]["id"].stringValue
+//                            let video_url = json["graphql"]["shortcode_media"]["video_url"].stringValue
+//                            let text = json["graphql"]["shortcode_media"]["title"].stringValue
+//
+//                            videoData.id = id
+//                            videoData.video_url = video_url
+//                            videoData.text = text
+//                        }.resume()
+//    return videoData
+//}
 
 extension Array{
     func collection(into size: Int) -> [[Element]]{

@@ -30,6 +30,8 @@ struct instagramPostData : Identifiable {
     var thumbnail : String
     var __typename : String
     var shortcode : String
+    
+   
 }
 
 struct instagramVideoData: Identifiable {
@@ -41,5 +43,6 @@ struct instagramVideoData: Identifiable {
 struct instagramSideCarData: Identifiable {
     var id : String
     var display_url : String
+    var videoData : instagramVideoData
     
 }

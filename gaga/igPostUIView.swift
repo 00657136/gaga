@@ -15,7 +15,7 @@ struct igPostUIView: View {
     @ObservedObject var results = getinstagramProfileData()
     
     
-    @State var player = AVPlayer(url: URL(string: "https://scontent-tpe1-1.cdninstagram.com/v/t50.2886-16/103435192_120999152963452_8029942739370787312_n.mp4?_nc_ht=scontent-tpe1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=8TF_PEp0AcgAX_zqyZn&oe=5EF6F62B&oh=5854624445755b20efc8c0e24c91072a")!)
+    @State var player = AVPlayer(url: URL(string: "https://scontent-tpe1-1.cdninstagram.com/v/t50.2886-16/103435192_120999152963452_8029942739370787312_n.mp4?_nc_ht=scontent-tpe1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=pgxkLzk-6PkAX96yeh9&oe=5EF9992B&oh=b1be375bb86541b7a752620c1c843349")!)
     @State var isplaying = false
     @State var showcontrols = false
     @State var value : Float = 0
@@ -28,7 +28,7 @@ struct igPostUIView: View {
     var comment : Int
     var liked : Int
     
-    @ObservedObject var videos = getinstagramVideoData()
+    //@ObservedObject var videos = getinstagramVideoData()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -89,13 +89,7 @@ struct igPostUIView: View {
                         self.showcontrols = true
                     }
                     
-    //                GeometryReader{_ in
-    //
-    //                    VStack{
-    //
-    //                        Text("Custom Video Player").foregroundColor(.white)
-    //                    }
-    //                }
+
                 }
                 .background(Color.black.edgesIgnoringSafeArea(.all))
                 .onAppear {
@@ -105,7 +99,10 @@ struct igPostUIView: View {
             }
             //***************GraphSideCar
             else if __typename == "GraphSideCar"{
-                
+                WebImage(url: URL(string: display_url)!)
+                .resizable()
+                .scaledToFit()
+                .frame(width:UIScreen.main.bounds.width)
             }
             
             
@@ -129,16 +126,18 @@ struct igPostUIView: View {
                     .frame(width:UIScreen.main.bounds.width/15)
             }.padding(.horizontal)
             
-            
-            VStack(alignment: .leading, spacing: 5){
-                Text("\(liked)個讚")
-                    .fontWeight(.bold)
-                    .font(.system(size: 15))
-                Text(text)
-                    .font(.system(size: 15))
-                Text("\(comment)則留言")
-                    .foregroundColor(Color(.gray))
-                    .font(.system(size: 15))
+            HStack{
+                VStack(alignment: .leading, spacing: 5){
+                    Text("\(liked)個讚")
+                        .fontWeight(.bold)
+                        .font(.system(size: 15))
+                    Text(text)
+                        .font(.system(size: 15))
+                    Text("\(comment)則留言")
+                        .foregroundColor(Color(.gray))
+                        .font(.system(size: 15))
+                }
+                Spacer()
             }.padding(.horizontal)
             
         }
@@ -151,33 +150,33 @@ struct igPostUIView_Previews: PreviewProvider {
     }
 }
 
-class getinstagramVideoData: ObservableObject {
-    //@Binding var shortcode : String
-    @Published var data = [instagramVideoData]()
-    init(){
-        let shortcode = igPostUIView(__typename: "", shortcode: "", text: "", display_url: "", comment: 0, liked: 0).shortcode
-        
-        let url = "https://www.instagram.com/p/" + shortcode + "/?__a=1"
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: URL(string: url)!){(data, _, err) in
-            if err != nil{
-                print((err?.localizedDescription)!)
-                return
-            }
-            let json = try! JSON(data: data!)
-            let id = json["graphql"]["shortcode_media"]["id"].stringValue
-            let video_url = json["graphql"]["shortcode_media"]["video_url"].stringValue
-            let text = json["graphql"]["shortcode_media"]["title"].stringValue
-                DispatchQueue.main.async {
-                    self.data.append(instagramVideoData(id: id, video_url: video_url, text: text))
-                }
-            
-            
-        }.resume()
-        
-        
-    }
-}
+//class getinstagramVideoData: ObservableObject {
+//    var shortcode =
+//    @Published var data = [instagramVideoData]()
+//    init(){
+//        
+//
+//        let url = "https://www.instagram.com/p/" + shortcode + "/?__a=1"
+//        let session = URLSession(configuration: .default)
+//        session.dataTask(with: URL(string: url)!){(data, _, err) in
+//            if err != nil{
+//                print((err?.localizedDescription)!)
+//                return
+//            }
+//            let json = try! JSON(data: data!)
+//            let id = json["graphql"]["shortcode_media"]["id"].stringValue
+//            let video_url = json["graphql"]["shortcode_media"]["video_url"].stringValue
+//            let text = json["graphql"]["shortcode_media"]["title"].stringValue
+//                DispatchQueue.main.async {
+//                    self.data.append(instagramVideoData(id: id, video_url: video_url, text: text))
+//                }
+//
+//
+//        }.resume()
+//
+//
+//    }
+//}
 
 struct Controls : View {
      
